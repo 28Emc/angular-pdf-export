@@ -1,0 +1,35 @@
+<div class="p-6">
+  <div class="card rounded-none">
+    <table aria-hidden="true" id="htmltable">
+      <tr class="font-medium uppercase bg-black text-white">
+        <td id class="px-3 pt-3 pb-2">#</td>
+        <td id class="px-3 pt-3 pb-2">Title</td>
+        <td id class="px-3 pt-3 pb-2">Body</td>
+        <td id class="px-3 pt-3 pb-2">Number</td>
+        <td id class="px-3 pt-3 pb-2">User</td>
+      </tr>
+      <tr *ngFor="let item of dataPDF; let i = index;">
+        <td id class="px-3 py-1" [ngClass]="i == 3 ? 'text-red' : 'text-secondary'">{{ item.id | number }}</td>
+        <td id class="px-3 py-1" [ngClass]="i == 3 ? 'text-red' : 'text-secondary'">{{ item.title | uppercase }}</td>
+        <td id class="px-3 py-1" [ngClass]="i == 3 ? 'text-red' : 'text-secondary'">{{ item.body | titlecase }}</td>
+        <td id class="px-3 py-1" [ngClass]="i == 3 ? 'text-red' : 'text-secondary'">{{ item.number | number: '1.2' }}
+        </td>
+        <td id class="px-3 py-1" [ngClass]="i == 3 ? 'text-red' : 'text-secondary'">{{ item.user }}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="py-3">
+    <button mat-button class="mr-3 btn bg-teal text-white" (click)="exportToPDFFromHTML()">
+      PDF from HTML (default)
+    </button>
+    <button mat-button class="mr-3 btn bg-teal text-white" (click)="exportToPDFWithCSS()">
+      PDF from HTML (with CSS)
+    </button>
+    <button mat-button class="mr-3 btn bg-teal text-white" (click)="exportToPDFWithGlobalProps()">
+      PDF from HTML (with Global props)
+    </button>
+    <button mat-button class="mr-3 btn bg-teal text-white" (click)="exportToPDFFromDataSource()">
+      PDF from DataSource
+    </button>
+  </div>
+</div>
